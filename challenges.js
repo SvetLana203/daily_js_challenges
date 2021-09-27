@@ -125,6 +125,7 @@ computeRemainder(10.5, 3) //=> 1.5
 // Your solution for 05-computeRemainder:
 function computeRemainder(n1, n2) {
   if (n2 === 0) return Infinity
+  return n1 - Math.floor(n1 / n2) * n2
 
   ///??????
 }
@@ -217,7 +218,9 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  return [...string].reduce((a, c) => ((a[c] = a[c] + 1 || (1 && a)), {}))
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -239,7 +242,13 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  n = n + ''
+  while (n.lenght < length) {
+    n = char + n
+  }
+  return n
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
