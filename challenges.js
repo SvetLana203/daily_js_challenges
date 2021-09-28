@@ -269,7 +269,15 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  let splitted = string.split('')
+  let reversed = splitted.reverse('')
+  let joined = reversed.join('')
+  return (
+    joined.toLowerCase().replace(/[^0-9a-z]/gi, '') ==
+    string.toLowerCase().replace(/[^0-9a-z]/gi, '')
+  )
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -291,7 +299,15 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  let i = 0,
+    count = 0
+  while (i < str1.length) {
+    if (str1[i] != str2[i]) count++
+    i++
+  }
+  return count
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -311,7 +327,20 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  let arr = string.split('')
+  mumbledArr = arr.map((char, idx) => {
+    let repeat = 0
+    let mumbledChar = ''
+    while (repeat <= idx) {
+      mumbledChar += char
+      repeat++
+    }
+    return mumbledChar
+  })
+  let mumbledStr = mumbledArr.join('-')
+  return mumbledStr
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -329,7 +358,11 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
+function fromPairs(arr) {
+  ///???????????
+  const obj = Object.fromEntries(arr)
+  console.log(obj)
+}
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
@@ -347,7 +380,10 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
+function mergeObjects(obj1, obj2) {
+  let merged = { ...obj1, ...obj2 }
+  console.log(merged)
+}
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
